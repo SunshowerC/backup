@@ -367,8 +367,12 @@
                 console.log($('#ensure-mission').find('figure.active').data('user-id'))
                 var ensureParticipant = that.getData({
                     url: "/post/assign",
-                    postId: postId,
-                    participantId: $('#ensure-mission').find('figure.active').data('user-id')
+                    data: {
+                        userId: userId,
+                        postId: postId,
+                        participantId: $('#ensure-mission').find('figure.active').data('user-id')
+                    }
+
                 });
 
                 ensureParticipant.done(function (data) {
