@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="assets/css/user.css">
+    <link rel="stylesheet" href="assets/css/basic.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/assess.css">
+</head>
+<body>
+
+
+<header>
+</header>
+
+<div class="user-content" id="tab-wrap">
+    <section class="user-info">
+        <!--头像，姓名等基本基本信息--->
+
+    </section>
+
+    <div class="user-panel-nav btn-group btn-group-justified" role="tablist">
+        <a id="user-collect" href="#user-message" class="btn btn-primary" role="tab" data-toggle="tab">我的消息</a>
+        <a href="#user-detail" class="btn btn-primary" role="tab" data-toggle="tab">我的资料</a>
+    </div>
+
+    <!-- 选项卡帖子导航菜单 -->
+    <div class="user-post-menu" id="user-post-menu">
+        <ul class="nav user-post-nav">
+            <li class="active">
+                <a href="#user-post" id="user-post-all" data-toggle="tab" data-post-group="0">
+                    <i class="glyphicon glyphicon-home"></i>
+                    我发布的帖子 </a>
+            </li>
+            <li>
+                <a href="#user-post" id="user-post-underway" data-toggle="tab" data-post-group="1">
+                    <i class="glyphicon glyphicon-link"></i>
+                    我参与的帖子 </a>
+            </li>
+            <li>
+                <a href="#user-post" id="user-post-finished" data-toggle="tab" data-post-group="2">
+                    <i class="glyphicon glyphicon-heart"></i>
+                    我收藏的帖子 </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--选项卡内容-->
+    <div class="tab-content ">
+
+        <!--帖子展示栏-->
+
+        <div class="tab-pane fade in active" id="user-post">
+            <!--帖子导航栏-->
+            <nav class="navbar navbar-default " role="navigation" id="user-post-nav">
+                <div class="collapse navbar-collapse post-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a   data-post-status="0">进行中</a></li>
+                        <li><a   data-post-status="1">已完成</a></li>
+                        <li><a   data-post-status="2">已取消</a></li>
+                    </ul>
+
+
+                </div>
+            </nav>
+
+            <!--帖子内容栏-->
+            <div class="post-container">
+
+            </div>
+
+            <!--分页-->
+            <div class="pagination-container ">
+                <ul id="post-page">
+                </ul>
+            </div>
+
+        </div>
+
+        <!--个人资料栏-->
+        <form class="tab-pane fade" id="user-detail">
+
+
+
+            <div class="btn-group  btn-group-justified">
+                <div class="btn-group">
+                    <button class="btn  btn-primary" type="button" id="btn-modify">
+                        修改
+                    </button>
+                </div>
+                <div class="btn-group">
+                    <button class="btn  btn-primary" type="button" id="info-submit">
+                        保存
+                    </button>
+                </div>
+
+            </div>
+        </form>
+
+        <!--我的消息栏-->
+        <div class="tab-pane fade " id="user-message">
+            <nav class="navbar navbar-default " role="navigation">
+                <div class="collapse navbar-collapse post-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a   class="transition">新消息</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="new-message">
+                <div data-post-id="" data-user-id="">
+                    <div class="system-message">
+                        <a>马市均</a>在帖子<a  >帮我拿快递</a>中@了你。
+                    </div>
+                </div>
+
+            </div>
+            <nav class="navbar navbar-default " role="navigation">
+                <div class="collapse navbar-collapse post-navbar">
+                    <ul class="nav navbar-nav">
+                        <li class=""><a   class="transition">过往消息</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="old-message">
+                <div class="pagination-container">
+                    <ul id="message-page">
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--头像上传弹窗面板-->
+<section class="avatar-upload-panel">
+    <div class="avatar-panel">
+        <header>
+            <h4>头像设置<a class="dismiss"><i class="glyphicon glyphicon-remove"></i></a></h4>
+
+        </header>
+
+        <div class="jcrop-body">
+            <div class="btn-group" id="btn-avatar" role="group">
+                <a class="btn btn-default active" id="local-avatar" href="#local-avatar-panel" data-avatar-type="0">本地头像
+                </a>
+                <a class="btn btn-default" id="default-avatar" href="#default-avatar-panel" data-avatar-type="1" >默认头像</a>
+            </div>
+            <div class="wrap clearfix" id="jcropdiv">
+                <div class="wl">
+                    <div class="jc-demo-box tab-content " >
+                        <div class="choose-default tab-pane fade" id="default-avatar-panel">
+                        <!--我的默认头像-->
+
+                        </div>
+                        <div class="choose-photo tab-pane active fade in" id="local-avatar-panel">
+                            <a class="a-upload">
+                                <i class="glyphicon glyphicon-plus"></i>
+                                选择图片
+                                <input type="file" value="选择图片"
+                                       name="avatar"
+                                       id="upload-img"
+                                       accept="image/jpg,image/jpeg,image/png,image/gif"
+                                       form="jcrop-params"/>
+                            </a>
+                            <p>只支持JPG，PNG，GIF图片格式</p>
+                        </div>
+                        <div id="target" class="jcrop_w" style="display: none;">
+                            <!--<img src="i/bb.jpg" width="100%"  />-->
+                        </div>
+                    </div>
+
+                </div>
+                <div class="wr" id="preview-pane">
+                    <div class="preview-container">
+                        <p>预览</p>
+                        <div class="pre-1">
+                            <!--<img src="i/bb.jpg" class="jcrop-preview jcrop_preview_s" alt="" />-->
+                        </div>
+                        <p>100px X 100px</p>
+                        <div class="pre-2">
+                            <!--<img src="i/bb.jpg" class="jcrop-preview jcrop_preview_s" alt="" />-->
+                        </div>
+                        <p>70px X 70px</p>
+                        <div class="pre-3">
+                            <!--<img src="i/bb.jpg" class="jcrop-preview jcrop_preview_s" alt="" />-->
+                        </div>
+                        <p>30px X 30px</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <form id="jcrop-params" action="http://192.168.20.21:3000/user/avatar" type="post"
+                  enctype="multipart/form-data" >
+
+                <input type="hidden" name="x" id="x">
+                <input type="hidden" name="y" id="y">
+                <input type="hidden" name="height" id="w">
+                <button class="btn btn-default" type="button" id="jcrop-submit">确定</button>
+            </form>
+            <button class="btn btn-default" id="avatar-upload-dismiss">取消</button>
+        </footer>
+    </div>
+</section>
+
+<!--确定任务人弹窗-->
+<section id="ensure-mission">
+    <div class="ensure-mission-panel">
+        <header>
+            <h4>确定任务人<a class="dismiss" data-triggle="dismiss"><i class="glyphicon glyphicon-remove"></i></a></h4>
+        </header>
+        <div class="panel-body">
+        <!--任务人候选人列表-->
+        </div>
+        <footer>
+            <button class="btn btn-default" id="btn-ensure-participant">确定</button>
+            <button class="btn btn-default" data-triggle="dismiss">取消</button>
+        </footer>
+    </div>
+</section>
+
+<!--任务评价弹窗-->
+<div class="modal fade" id="assess-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">评价</h4>
+            </div>
+            <div class="modal-body">
+                <div class="welcome">
+                    <h3>选择时间银行</h3>
+                    <p class="modal-title2">有您的评价，我们会做得更好</p>
+                </div>
+                <div id="startone"  class="clearfix" >
+                    <div class="star_score"></div>
+                    <p class="score">您的评分：<span class="fenshu" id="judge-him">0</span> 分</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="access-submit" data-dismiss="modal"><span>确认</span></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span>取消</span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--头像，姓名等基本基本信息-模板-->
+<script type="text/template" id="user-info-tpl">
+
+    <figure class="photo">
+        <div class="photo-wrap" id="user-avatar">
+            <div class="photo-mask">点击更换头像</div>
+            <img src="<%= $.originUrl + user.avatar %>" alt="头像">
+        </div>
+        <figcaption>
+            <%=user.stuName%>
+        </figcaption>
+    </figure>
+    <div class="user-time-num">
+        <%=user.coin%>
+    </div>
+    <div class="user-star">
+        ☆☆☆☆☆
+        <div data-score style="width: <%= user.finalScore / 5 * 100 %>%">★★★★★</div>
+    </div>
+</script>
+
+<!--修改个人资料-模板-->
+<script type="text/template" id="user-detail-tpl">
+
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+            <input type="tel"
+                   class="form-control"
+                   name="phone_short"
+                   placeholder="短号"
+                   value="<%= user.phone_short %>"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text"
+                   class="form-control"
+                   name="wechat"
+                   placeholder="微信"
+                   value="<%= user.wechat %>"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-qq"></span></span>
+            <input type="text"
+                   class="form-control"
+                   pattern="\d"
+                   name="qq"
+                   placeholder="QQ"
+                   value="<%= user.qq %>"/>
+        </div>
+    </div>
+
+    <div class="form-group glyphicon t-area">
+        <textarea class="form-control"
+                  rows="3" name="skills"
+                  placeholder=" 自我介绍"
+        ><%= user.skills %></textarea>
+    </div>
+
+</script>
+
+<!--个人消息-模板-->
+<script type="text/template" id="message-tpl">
+    <header>
+        5条消息
+    </header>
+    <section>
+
+    <% for( var i = 0,len = message.length; i < len; i++) {  %>
+    <div class="media message-item">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src=" <%= message[i].formWhoImg %> " alt="消息头像">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading"><%= message[i].formWho %> ●
+                <time><%= message[i].sendTime %></time>
+            </h4>
+            <%= message[i].content %>
+        </div>
+    </div>
+    <% } %>
+    </section>
+
+</script>
+
+<!--帖子-模板-->
+<script type="text/template" id="post-tpl">
+    <% posts.forEach(function(item){ %>
+        <%  /* 我发布的帖子&&状态0        待确定1*/
+    if ( item.postGroup == "0"  && (item.status == 0 || item.status == 1) ){ %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="ensure" >
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--我发布的帖子&&状态0 待确定1，<br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-sure transition">确定任务人</a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%   /* 状态2&&任务受益人          待受益人点击完成任务/取消任务2*/
+    } else if ( item.status == 2 && ( (item.postGroup == 0 && item.postType == "1") || (item.postGroup == 1 && item.postType == "0") ) ) { %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="ensured">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--状态2&&任务受益人          待受益人点击完成任务/取消任务2
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-complete transition">任务完成</a>
+            <a   class="btn btn-sm btn-cancel transition">任务中止</a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%/* 我接收的任务&&状态1        已报名5*/
+    } else if (item.postGroup == "1" && item.status == 0) { %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="enrolled">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--我接收的任务&&状态1        已报名5
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-enrolled ">已确认报名</a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%   /* 状态2&&任务非受益人        非受益人任务进行中 6*/
+    } else if ( item.status == 2 && ((item.postType == "0" && item.postGroup == 0) || (item.postType == "1" && item.postGroup == 1)) ) { %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="underway">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--状态2&&任务非受益人        非受益人任务进行中 6
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-underway ">任务进行中</a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%   /*                          点击完成任务后，我未评价3*/
+    } else if( ( item.postGroup == "0" && item.status == 5 && item.scoreStatus !=1 ) || ( item.postGroup == "1" && item.status == 5 && item.scoreStatus !=2 ) ){ %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="judge">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--我发布的任务&&帖子状态3&&发帖人未评分||我参与的任务&&帖子状态3&&参与人未评分    点击完成任务后，我未评价3
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+
+            <a   data-parti-id="<%= item.participant.filter(function(partiItem){
+                    return ( partiItem.status == 4 );
+            })[0].userId  %>"
+               class="btn btn-sm btn-judge " data-toggle="modal" data-target="#assess-modal">评价</a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%   /*                          点击完成任务后，我已评价7*/
+    } else if( (item.postGroup == "0" && item.status == 5 && item.scoreStatus == 1) || (item.postGroup == "1" && item.status == 5 && item.scoreStatus == 2)){ %>
+    <article class="post-item media"  data-post-id=<%= item._id %> data-post-type="wait-judged">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--我发布的帖子&&帖子状态3&&参与人已评价 || 我参与的帖子&&帖子状态3&&发帖人已评价  点击完成任务后，对方已评价7
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-wait-judged transition">等待对方评价</a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%    /*                          任务结束4*/
+    } else if ( (item.status == 3 && item.scoreStatus == 3) || item.status == 4) {  %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="over">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--帖子状态3 && 双方评分，或者帖子结束
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-over ">
+                任务结束
+            </a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+    <%    /*                          已报名，等待发帖人确定*/
+    } else if ( item.status == 1 && item.postGroup == 1  ) {  %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="enrolled">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--
+                帖子状态1 && 我参与的帖子
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-over ">
+                已报名
+            </a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+    <%    /*                          收藏帖子*/
+    } else if (item.postGroup == 2) {  %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="over">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                <!--收藏的帖子
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;-->
+                <%=  $.replace_em( item.content ) %>
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者
+                    <a   id="collected" class="glyphicon glyphicon-heart"></a>
+                </p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-over ">
+
+            </a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+
+
+    <%    /*                          帖子异常情况，请上报*/
+    } else  {  %>
+    <article class="post-item media" data-post-id=<%= item._id %> data-post-type="over">
+        <div class="media-left">
+            <a  >
+                <img class="media-object" src="<%=$.originUrl + item.publisherAvatar %>" alt="...">
+                <p><%= item.publisherName %></p>
+            </a>
+        </div>
+
+        <div class="media-body">
+            <h4 class="media-heading"><%= item.title %></h4>
+            <p class="article-content">
+                异常情况，请上报
+                <br>
+                postGroup(左侧组别): <%= item.postGroup %>;
+                status(帖子状态):<%= item.status  %>;
+                postType(帮助/求助):<%= item.postType %>;
+                scoreStatus(评分状态):<%= item.scoreStatus %>;
+            </p>
+            <footer>
+                <time><%= $.getDate(item.pubTime)  %></time>
+                <p class="sign-info">已有<span><%= item.participant.length %></span>个报名者 <a   class="cancel">取消</a></p>
+            </footer>
+        </div>
+
+        <div class="media-right">
+                        <span class="time-value">
+                            <%= item.missionCoin %>
+                        </span>
+            <a   class="btn btn-sm btn-over ">
+                任务???
+            </a>
+        </div>
+        <div class="superscript">
+            <span>
+                <% if(item.postType == 1) { %>
+                求助
+                <% } else {%>
+                帮助
+                <% } %>
+            </span>
+        </div>
+    </article>
+
+
+        <% }
+    }); %>
+</script>
+
+<!--默认头像-模板-->
+<script type="text/template" id="default-avatar-tpl">
+    <% avatar.forEach(function(item){ %>
+        <figure class="default-avatar-item" data-avatar-src="<%= item %>">
+            <img src="<%= $.originUrl + item %>" alt="">
+        </figure>
+    <% }) %>
+
+
+</script>
+
+<!--确定任务人-模板-->
+<script type="text/template" id="ensure-mission-tpl">
+    <% participants.forEach(function(item){ %>
+        <figure class="mission-avatar-item" data-user-id="<%= item.userId %>">
+            <img src="<%= $.originUrl + item.avatar   %>" alt="头像">
+            <div class="person-info"><%= item.name %>
+                <span class="star-num"><i class="glyphicon glyphicon-star"></i><%= item.finalScore.toFixed(1) %></span></div>
+        </figure>
+    <% }) %>
+</script>
+
+<script src="scripts/jquery-1.11.3/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="scripts/jquery-1.11.3/bootstrap-paginator.min.js"></script>
+<script src="scripts/jquery-1.11.3/jquery.template.js"></script>
+<script src="scripts/xxx.js"></script>
+
+<!--头像切割-->
+<script src="scripts/jquery-1.11.3/jquery.Jcrop.js"></script>
+<script src="scripts/avatarJcrop2.0.js"></script>
+<!--评分-->
+<script src="scripts/startScore.js"></script>
+
+
+
+<script>
+
+</script>
+
+<script src="scripts/user2.0.js"></script>
+</body>
+</html>
+

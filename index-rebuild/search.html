@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title></title>
+        <link href="assets/css/index.css" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="assets/css/header.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/index-content.css">
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	</head>
+	<body>
+		<header>
+			<div class="header-container">
+				<div class="header-logo">时间银行<span>首页</span></div>
+				<div class="header-search">
+					<div class="search">
+						<input  placeholder="search" class="form-control search-box" type="text"  />
+						<img type='button' class='search-icon' src="assets/img/search.png">
+					</div>
+					<div class="search-btn"><a href="javascript:">签到</a></div>
+				</div>
+				<div class="header-user">
+					<p class="user"><span class="glyphicon glyphicon-user user-icon"></span><span class="user-name">方泽锋</span></p>
+					<p class="chat"><span class="glyphicon glyphicon-comment chat-icon"></span><span class='chat-nums'>0</span></p>
+					<p class="money"><img class='money' src="assets/img/money.png"><span class='money-nums'>0</span></p>
+				</div>
+			</div>
+		</header>
+	    <div class="content">
+			<div class="bs-example bs-example-tabs" data-example-id="togglable-tabs">
+				<ul id="myTabs" class="nav nav-tabs" role="tablist">
+					  <li role="presentation" class="active">
+					      <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">帖子</a>
+					  </li>
+					  <li role="presentation" class="">
+					      <a href="#profile" role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded= "false">用户</a>
+					  </li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+				  	<div role="tabpanel" class="tab-pane fade active in searchPost" id="home" aria-labelledby="home-tab">
+						<!-- <div><p class="title"><a href="#">帖子1</a></p></div>
+						<div><p class="title"><a href="#">帖子2</a></p></div>
+						<div><p class="title"><a href="#">帖子2</a></p></div> -->
+				  	</div>
+					<div role="tabpanel" class="tab-pane fade searchUser" id="profile" aria-labelledby="profile-tab">
+						<!-- <div class="users">
+							<a href="#"><img src="assets/img/icon.jpg" alt="Jane" class="img"></a>
+							<div class="information">
+								<span class="name"><a href="#">Jane</a></span>
+								<span class="glyphicon glyphicon-star"></span>
+							</div>
+						</div>
+						<div class="users">
+							<a href="#"><img src="assets/img/icon.jpg" alt="Jane" class="img"></a>
+						</div>
+						<div class="users">
+							<a href="#"><img src="assets/img/icon.jpg" alt="Jane" class="img"></a>
+						</div> -->
+				  	</div>
+				</div>
+			</div>
+		</div>
+        <script src="scripts/jquery-1.11.3/jquery.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="scripts/jquery-1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="scripts/search.js"></script>
+    </body>
+</html>

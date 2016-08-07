@@ -1,0 +1,191 @@
+.close {
+	margin-top:-10px;
+}
+.modal-header button span {
+	font-size:40px;
+}
+.modal-content {
+	width:300px;
+	height:380px;
+	background:#FFF;
+	border:1px solid #ddd;
+	border-top:4px solid #3287ba;
+	margin:100px auto;
+	z-index:333;
+	position:relative;
+}
+.assess-head {
+	padding:0!important;
+}
+.modal-header {
+	padding:5px;
+}
+.modal-header h4 {
+	color:#7e803d;
+	font-size:18px;
+	font-weight:100;
+}
+.assess-text {
+	padding:0px;
+	width:50px;
+}
+.assess-close {
+	position:absolute;
+	top:-8px;
+	right:0;
+}
+.head-border-divided {
+	border-top:1px solid #b4b5b5;
+	margin:1px;
+	height:2px;
+	margin-bottom:47px;
+}
+.modal-body {
+	font-size:16px;
+	color:#3e3a39;
+}
+.modal-content hr.border-divided {
+	border-bottom:1px solid #b4b5b5;
+	margin:0px;
+}
+.modal-header {
+	border-bottom:1px solid #b4b5b5;
+}
+.margin {
+	margin-top:55px;
+	margin-bottom:20px;
+	text-align:center;
+}
+.welcome h3 {
+	font-size:18px;
+color:#221814;
+	font-weight:100;
+	text-align:center;
+}
+.welcome p {
+	font-size:16px;
+	color:#595757;
+	text-align:center;
+}
+.assess-modal-footer {
+	background-color:#fafbfb;
+	height:97px;
+}
+.assess-btn {
+	width:70px;
+	height:40px;
+	font-size:18px;
+	margin-top:30px;
+	margin-right:50px;
+}
+.modal-footer button.btn.btn-primary span {
+	font-size:18px;
+}
+.modal-footer button.btn.btn-default {
+	width:70px;
+	height:40px;
+}
+.modal-footer button.btn.btn-default span {
+	font-size:18px;
+	color:#3e3a39;
+}
+
+
+
+/*星星样式*/
+.show_number {
+	padding-left:50px;
+	padding-top:20px;
+}
+.show_number li {
+	width:240px;
+	border:1px solid #ccc;
+	padding:10px;
+	margin-right:5px;
+	margin-bottom:20px;
+}
+.atar_Show {
+	/*background:url("images/stark2.png");*/
+	width:160px;
+	height:21px;
+	position:relative;
+	float:left;
+}
+.atar_Show p {
+	/*background:url("images/stars2.png");*/
+	left:0;
+	height:21px;
+	width:134px;
+}
+.show_number li span {
+	display:inline-block;
+	line-height:21px;
+}
+li,ul {
+	margin: 0;
+	padding: 0;
+}
+ul, li, ol {
+	list-style: none;
+}
+/* 重置文本格式元素*/
+
+#assess-modal a {
+	text-decoration: none;
+	cursor: pointer;
+	color:#333333;
+	font-size:14px;
+}
+#assess-modal a:hover {
+	text-decoration: none;
+}
+.clearfix::after {
+	display:block;
+	content:'';
+	height:0;
+	overflow:hidden;
+	clear:both;
+}
+/*星星样式*/
+	.block {
+	width:100%;
+	margin:0 0 20px 0;
+	padding-top:10px;
+	padding-left:50px;
+	line-height:21px;
+}
+#startone {
+	height: 140px;
+}
+.star_list {
+	height:21px;
+	margin:50px;
+	line-height:21px;
+}
+.star_score {
+	background:url(../img/stark1.png);
+	background-size: 50px 35px;
+	margin: 25px auto;
+	height:35px;
+	position:relative;
+}
+.score {
+	margin: 20px 72px;
+}
+.star_score a {
+	height:35px;
+	display:block;
+	text-indent:-999em;
+	position:absolute;
+	left:0;
+}
+.star_score a:hover {
+	background:url(../img/stars1.png);
+	background-size: 50px 35px;
+	left:0;
+}
+.star_score a.clibg {
+	background:url(../img/stars1.png);
+	background-size: 50px 35px;
+	left:0;
+}

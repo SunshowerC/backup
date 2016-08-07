@@ -1,0 +1,43 @@
+.title {
+	padding:20px;
+	border-bottom:1px solid #eee
+}
+.users {
+	padding:20px;
+	border-bottom:1px solid #eee
+}
+.img {
+	width:50;
+	height:50px;
+	padding-right:10px;
+}
+.information {
+	display:inline-table;
+	padding-top:10px;
+}
+.name {
+	display:block
+}
+.information .glyphicon, .information .glyphicon-star {
+	color:rgb(247, 213, 72);
+}
+.star_score {
+    background: url(../img/stark1.png);
+    background-size: 20px 14px;
+    margin:3px  0px;
+    height: 14px;
+    position: relative;
+    width: 100px;
+}
+.star_score a.clibg {
+    background: url(../img/stars1.png);
+    background-size: 20px 14px;
+    left: 0;
+}
+.star_score a {
+    height: 14px;
+    display: block;
+    text-indent: -999em;
+    position: absolute;
+    left: 0;
+}

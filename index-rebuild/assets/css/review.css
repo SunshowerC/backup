@@ -1,0 +1,659 @@
+@charset "UTF-8";
+@import url(jquery.Jcrop.css);
+.form-signin {
+  max-width: 280px;
+  padding: 15px;
+  margin: 100px;
+  margin-top: 20px;
+}
+
+.panel-default {
+  opacity: 0.8;
+  /*margin-top:30px;*/
+}
+
+.input-group-addon {
+  background-color: #3276b1;
+  border-color: #285e8e;
+  color: #fff;
+}
+
+.form-control:focus {
+  color: #666;
+}
+
+.form-signup input[type="text"], .form-signup input[type="password"] {
+  border: 1px solid #3276b1;
+}
+
+.fullscreen_bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-image: url("http://blog.transfer-iphone-recovery.com/images/photo-with-blur-background.jpg");
+  background-repeat: repeat;
+}
+
+/*profile user menu*/
+.user-post-menu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.user-post-menu ul li:last-child {
+  border-bottom: none;
+}
+
+.user-post-menu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.user-post-menu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.user-post-menu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.user-post-menu ul li.active {
+  border-bottom: none;
+}
+
+.user-post-menu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
+}
+
+.wrap {
+  display: inline-block;
+  text-align: left;
+}
+
+.wl {
+  float: left;
+  width: 400px;
+}
+
+.wr {
+  float: left;
+  margin-left: 26px;
+  display: inline;
+}
+
+.jc-demo-box {
+  position: relative;
+  background-color: #e7e7e7;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  border: 1px solid #c8c8c8;
+}
+
+.jcrop_w {
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.jcrop_w img {
+  position: absolute;
+}
+
+.pre-1, .pre-2, .pre-3 {
+  /*border: 1px solid #c8c8c8;*/
+  border-radius: 50%;
+  margin: 13px auto;
+  text-align: center;
+}
+
+.pre-1 {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.pre-2 {
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  margin-top: 13px;
+}
+
+.pre-3 {
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin-top: 13px;
+  border-radius: 0;
+}
+
+.avatar-panel, .ensure-mission-panel {
+  width: 560px;
+  margin: 0 auto;
+  border-top: 4px solid #3288bb;
+  box-shadow: 0 0 10px #666;
+}
+
+.avatar-panel header, .ensure-mission-panel header {
+  border-bottom: 2px solid #ddd;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.avatar-preview p {
+  margin-bottom: 0;
+}
+
+/*图片上传样式*/
+.a-upload {
+  padding: 0 10px;
+  line-height: 26px;
+  position: relative;
+  cursor: pointer;
+  color: #888;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+.a-upload input {
+  position: absolute;
+  font-size: 28px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+}
+
+.a-upload:hover {
+  color: #444;
+  background: #eee;
+  text-decoration: none;
+}
+
+.choose-photo {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.avatar-panel footer, .ensure-mission-panel footer {
+  margin-top: 10px;
+  padding: 10px 0;
+  text-align: center;
+  background-color: #f7f7f7;
+}
+
+.clearfix:after {
+  content: "\200B";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+
+#jcropdiv {
+  margin: 20px auto;
+}
+
+.jcrop-body {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.preview-container p {
+  text-align: center;
+  color: #666;
+}
+
+body {
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+
+ul, li {
+  padding: 0;
+  list-style: none;
+}
+
+.jc-demo-box.tab-content {
+  padding-left: 0;
+}
+
+.transition {
+  transition-duration: 0.3s;
+}
+
+.user-content {
+  width: 960px;
+  margin: 50px auto;
+  font-size: 16px;
+}
+
+.user-info {
+  text-align: center;
+  background-color: #fbfbfc;
+  padding-top: 30px;
+  border: 1px solid #e1e1e8;
+}
+
+.photo-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.photo-wrap > .photo-mask {
+  position: absolute;
+  top: -100%;
+  width: 100px;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  color: #fff;
+  line-height: 100px;
+  transition: top 0.5s;
+  /*transition-duration: 0.5s;*/
+}
+
+.photo-wrap:hover > .photo-mask {
+  top: 0;
+}
+
+.photo img {
+  width: 100px;
+  height: 100px;
+}
+
+.photo figcaption {
+  font-size: 14px;
+}
+
+.user-time-num {
+  color: #e7ab6f;
+}
+
+.user-time-num:before {
+  content: url("../img/coin.png");
+  position: relative;
+  bottom: -3px;
+}
+
+.user-star {
+  position: relative;
+  display: inline-block;
+  color: #f3c637;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.user-star > [data-score] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.user-panel-nav {
+  margin-bottom: 20px;
+}
+
+/*
+.user-panel-nav {
+    background-color: #30aad8;
+    margin-bottom: 30px;
+}
+
+.user-panel-nav > li {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.user-panel-nav > li.active > a, .user-panel-nav > li.active > a:focus, .user-panel-nav > li > a:hover {
+    background-color: #2494BC !important;
+    color: #fff;
+    -webkit-box-shadow: inset 0 1px 5px rgba(0, 0, 0, .1);
+    -moz-box-shadow: inset 0 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, .1);
+}
+
+.user-panel-nav a {
+    color: #fff;
+    border: none !important;
+}
+*/
+.user-post-menu {
+  float: left;
+  width: 25%;
+  padding-right: 15px;
+}
+
+.tab-content {
+  float: right;
+  width: 75%;
+  padding-left: 15px;
+}
+
+.glyphicon-qq:before {
+  content: "QQ";
+  font-weight: bolder;
+}
+
+/*#user-detail {*/
+/*text-align: center;*/
+/*}*/
+.tab-content textarea {
+  padding-top: 25px;
+  text-indent: 2.5em;
+  font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+  resize: none;
+}
+
+.t-area {
+  position: relative;
+  display: block;
+  /*font-family: "Microsoft Yahei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif;*/
+}
+
+.t-area:after {
+  content: "\e065";
+  position: absolute;
+  top: 0px;
+  padding: 8px 12px;
+  border-radius: 4px 0 4px 0;
+  background-color: #3276b1;
+  color: #fff;
+}
+
+#user-post > nav {
+  margin-bottom: 0;
+}
+
+.post-navbar {
+  padding: 0;
+}
+
+.search-bar {
+  float: right;
+}
+
+/*帖子*/
+/*文本溢出省略，兼容性有待加强*/
+.ellipsis {
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.post-container {
+	padding:10px;
+}
+article.post-item {
+  border-bottom: 1px dashed #aaa;
+  height:40px;
+}
+#build {
+  display:none;
+}
+.post-item .media-left {
+  text-align: center;
+  float:left;
+}
+.post-item .media-left p {
+  width: 60px;
+  font-size: 14px;
+}
+
+.post-item .media-object {
+  width: 30px;
+  display: inline-block;
+}
+
+.post-item > .media-body {
+  position: relative;
+  padding-bottom: 20px;
+}
+.post-item > .media-body h4 {
+  color: #4e73b8;
+  font-size: 14px;
+  display:inline-block;
+}
+.reply_count {
+    width: 70px;
+    display: inline-block;
+    text-align: center;
+}
+.count_of_replies {
+    color: #9e78c0;
+	font-size:10px;
+}
+.count_seperator {
+    margin: 0 -3px;
+    font-size: 10px;
+}
+.count_of_visits {
+    font-size: 10px;
+    color: #b4b4b4;
+}
+time {
+	float:right;
+	color:#777;
+	font-size:.8em;
+}
+.article-content {
+  display: -webkit-box !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-indent: 2em;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.post-item > .media-body > footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.post-item footer > .sign-info {
+  float: right;
+  position: relative;
+  margin: 0;
+}
+.post-item footer > .sign-info:before {
+  content: url("../img/collect.png");
+  position: absolute;
+  left: -25px;
+}
+.post-item footer > .sign-info .cancel {
+  margin-left: 10px;
+}
+
+.post-item .media-right {
+  width: 200px;
+  text-align: center;
+}
+.post-item .media-right .btn-over, .post-item .media-right .btn-enrolled, .post-item .media-right .btn-underway {
+  width: 82px;
+  pointer-events: none;
+}
+
+.time-value:before {
+  content: "￥";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  background-color: #dfc935;
+}
+
+.btn-sure, .btn-complete, .btn-cancel, .btn-judge {
+  width: 82px;
+  margin-top: 12px;
+  border: 1px solid #2d70b0;
+  color: #2d70b0;
+}
+.btn-sure:hover, .btn-complete:hover, .btn-cancel:hover, .btn-judge:hover {
+  color: #fff;
+  background-color: #2d70b0;
+}
+
+.post-item a.cancel {
+  visibility: hidden;
+}
+
+.post-item[data-post-type="ensure"] a.cancel, .post-item[data-post-type="enrolled"] a.cancel {
+  visibility: visible;
+}
+
+/*帖子end*/
+.pagination-container {
+  text-align: center;
+}
+.pagination-container a {
+  cursor: pointer;
+}
+
+/*头像上传*/
+.avatar-upload-panel, #ensure-mission {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 99;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  background-color: #fff;
+}
+.avatar-upload-panel .dismiss, #ensure-mission .dismiss {
+  float: right;
+  cursor: pointer;
+}
+
+.choose-default {
+  padding: 20px 5px;
+}
+
+.default-avatar-item {
+  float: left;
+  width: 33.33%;
+  padding: 0 10px;
+}
+
+.default-avatar-item > img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.preview-container [class*="pre-"] {
+  box-shadow: 0 0 6px #eee;
+}
+
+/*头像上传end*/
+/*我的消息*/
+#user-message h3 {
+    margin: 0;
+    height: 30px;
+    line-height: 30px;
+    background-color: #b9c0d2;
+    margin: 0 0 10px 0;
+}
+#user-message-content div {
+      padding: 20px;
+}
+.message-item .media-object {
+  width: 30px;
+  height: 30px;
+}
+
+.message-item .media-body {
+  font-size: 15px;
+  color: #333;
+}
+
+.message-item .media-heading {
+  font-size: 12px;
+  color: #666;
+}
+.message-item .media-heading time {
+  color: #32b5e9;
+}
+.system-message {
+    height: 23px;
+    margin: 18px 0;
+}
+/*我的消息end*/
+.ensure-mission-panel {
+  width: 450px;
+}
+.ensure-mission-panel .panel-body {
+  height: 300px;
+  padding: 30px 0 0;
+  overflow-y: auto;
+}
+.ensure-mission-panel .mission-avatar-item {
+  position: relative;
+  float: left;
+  width: 100px;
+  margin: 0 25px 20px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.4s;
+}
+.ensure-mission-panel .mission-avatar-item:hover .person-info {
+  bottom: 0;
+}
+.ensure-mission-panel .mission-avatar-item.active {
+  box-shadow: 0 4px 8px #aaa;
+}
+.ensure-mission-panel .mission-avatar-item .person-info {
+  position: absolute;
+  bottom: -25px;
+  width: 100px;
+  height: 25px;
+  padding: 0 10px;
+  color: #fff;
+  line-height: 25px;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: bottom 0.5s;
+}
+.ensure-mission-panel .mission-avatar-item .star-num {
+  float: right;
+}
+.ensure-mission-panel .mission-avatar-item .glyphicon-star {
+  color: #f3c637;
+}
+.ensure-mission-panel .mission-avatar-item img {
+  width: 100%;
+}

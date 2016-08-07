@@ -1,0 +1,47 @@
+function sendformdataRequest(url, params, beforeSend, success, error){
+	$.ajax({ 
+		async: false,  
+		cache: false,  
+		contentType: false,  
+		processData: false,  
+		type: "POST",
+		dataType:"json",
+		cache: false,
+		url: 'http://192.168.20.21:3000/' + url,
+		data: params,
+		success: success,
+		error: error,
+		beforeSend:beforeSend
+	});	
+}
+function sendRequest(url, params, beforeSend, success, error){
+	$.ajax({
+		type: "POST",
+		dataType:"json",
+		cache: false,
+		url: 'http://192.168.20.21:3000/' + url,
+		data: params,
+		success: success,
+		error: error,
+		beforeSend:beforeSend
+	});
+}
+//使用方法
+var userData = {
+	userId: "5796e869672c855428590e0a"
+} 
+var url = 'user/getMyInfo';
+sendRequest(url, userData, function beforeSend(xhr) {
+	xhr.setRequestHeader('xkey', '5796e869672c855428590e0a');
+			//xhr.setRequestHeader('xtoken', token);
+}, function success(data){
+	if(data.statusCode == 100){
+  		console.log(data);
+  		var userInfo = data.result.userInfo;
+  		var avatarHtml = '';
+  		avatarHtml = '<img src="' + userInfo.avatar + 'assets/img/1.jpg">'; 
+        $('.p-avatar').prepend(avatarHtml);   
+	}
+}, function error(){
+	alert('error');
+});

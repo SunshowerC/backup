@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="assets/css/review.css">
+    <link rel="stylesheet" href="assets/css/basic.css">
+</head>
+<body>
+
+
+<header>
+</header>
+
+<div class="user-content" id="tab-wrap">
+    <section class="user-info">
+        <!--头像，姓名等基本基本信息--->
+      			<figure class="photo">
+                    <div class="photo-wrap" id="user-avatar">
+					<img src=""/>
+                    </div>
+                    <figcaption id="stuName">
+                    </figcaption>
+                </figure>
+                <div class="user-time-num">
+                </div>
+                <div class="user-star" >
+                    ☆☆☆☆☆
+                    <div data-score="45%" id="star">★★★★★</div>
+                </div>
+    </section>
+
+    <div class="user-panel-nav btn-group btn-group-justified" role="tablist">
+        <a href="#user-detail" class="btn btn-primary" role="tab" data-toggle="tab" id="userDetailLink">TA 的资料</a>
+    </div>
+
+    <!-- 选项卡帖子导航菜单 -->
+    <div class="user-post-menu">
+        <ul class="nav user-post-nav">
+            <li>
+                <a href="#user-post" id="user-post-all" class="post" data-toggle="tab" data-post-group="mine">
+                    <i class="glyphicon glyphicon-home"></i>
+                    TA 发布的帖子 </a>
+            </li>
+            <li>
+                <a href="#user-join" id="user-post-underway" data-toggle="tab" data-post-group="joined">
+                    <i class="glyphicon glyphicon-link"></i>
+                    TA 参与的帖子 </a>
+            </li>
+            <li>
+                <a href="#user-collect" id="user-post-finished" data-toggle="tab" data-post-group="collect">
+                    <i class="glyphicon glyphicon-heart"></i>
+                    TA 收藏的帖子 </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--选项卡内容-->
+    <div class="tab-content">
+
+        <!--帖子展示栏-->
+		<!--发布的帖子标题集-->
+        <div class="tab-pane fade in active" id="user-post">
+            <!--帖子导航栏-->
+            <nav class="navbar navbar-default " role="navigation">
+                <div class="collapse navbar-collapse post-navbar">
+                    <ul class="nav navbar-nav">
+                        <li id="build"><a href="#">TA 发布的帖子</a></li>
+                        <li id="join"><a href="#">TA 参与的帖子</a></li>
+                        <li id="collect"><a href="#">TA 收藏的帖子</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--帖子内容栏-->
+            <div class="post-container">
+			<!--动态插入标题-->
+            </div>
+
+            <!--分页-->
+<!--        <nav>另一个方法
+			  <ul class="pagination" id="postPagination">
+				<li>
+				  <a aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+				<li><a>1</a></li>
+				<li><a>2</a></li>
+				<li><a>3</a></li>
+				<li><a>4</a></li>
+				<li><a>5</a></li>
+				<li>
+				  <a aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			  </ul>
+			</nav>-->
+			<div class="pagination-container">
+                <ul id="post-page">
+                </ul>
+            </div>
+        </div>
+		
+		<!--参与的帖子标题集-->
+		<div class="tab-pane fade in active" id="user-join">
+            <!--帖子导航栏-->
+            <nav class="navbar navbar-default " role="navigation">
+                <div class="collapse navbar-collapse post-navbar">
+                    <ul class="nav navbar-nav">
+                        <li id="build"><a href="#">TA 发布的帖子</a></li>
+                        <li id="join"><a href="#">TA 参与的帖子</a></li>
+                        <li id="collect"><a href="#">TA 收藏的帖子</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--帖子内容栏-->
+            <div class="join-container">
+            </div>
+
+            <!--分页-->
+			<div class="pagination-container">
+                <ul id="join-page">
+                </ul>
+            </div>
+        </div>
+		<!--收藏的帖子标题集-->
+		<div class="tab-pane fade in active" id="user-collect">
+            <!--帖子导航栏-->
+            <nav class="navbar navbar-default " role="navigation">
+                <div class="collapse navbar-collapse post-navbar">
+                    <ul class="nav navbar-nav">
+                        <li id="build"><a href="#">TA 发布的帖子</a></li>
+                        <li id="join"><a href="#">TA 参与的帖子</a></li>
+                        <li id="collect"><a href="#">TA 收藏的帖子</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!--帖子内容栏-->
+            <div class="collect-container">
+            </div>
+
+            <!--分页-->
+			<div class="pagination-container">
+                <ul id="collect-page">
+                </ul>
+            </div>
+        </div>
+
+        <!--个人资料栏-->
+        <form class="tab-pane fade" id="user-detail">
+
+       <!--     
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                    <input  type="text" class="form-control" name="wechat" placeholder="微信"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-qq"></span></span>
+                    <input type="text" class="form-control" pattern="\d" name="qq" placeholder="QQ"/>
+                </div>
+            </div>
+
+            <div class="form-group glyphicon t-area">
+                <textarea class="form-control" rows="3" name="intro" placeholder=" 自我介绍"></textarea>
+
+            </div>-->
+
+
+        </form>
+
+        <!--我的消息栏-->
+        
+
+
+
+    </div>
+</div>
+
+
+
+<!--个人资料-模板-->
+<script type="text/template" id="user-detail-tpl">
+
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+            <input type="text"
+                   class="form-control"
+                   name="weChat"
+                   placeholder="微信"
+                   value="<%= user.weChat %>"/>
+				  
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-qq"></span></span>
+            <input type="text"
+                   class="form-control"
+                   pattern="\d"
+                   name="qq"
+                   placeholder="QQ"
+                   value="<%= user.qq %>"/>
+        </div>
+    </div>
+
+    <div class="form-group glyphicon t-area">
+        <textarea class="form-control"
+                  rows="3" name="intro"
+                  placeholder=" 自我介绍"
+
+        ><%= user.self_intro %></textarea>
+    </div>
+
+
+</script>
+<script src="scripts/jquery-1.11.3/jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="scripts/jquery-1.11.3/bootstrap-paginator.min.js"></script>
+<script src="scripts/jquery-1.11.3/jquery.template.js"></script>
+<script src="scripts/review.js"></script>
+</body>
+</html>
+
