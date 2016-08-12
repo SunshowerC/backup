@@ -51,7 +51,7 @@ $(document).ready(function(){
 		$.ajax({
 			type: "POST", //与后端沟通好用get还是post
 			dataType:"json",
-			url: "http://192.168.20.16:3000/user/signup",//与后端沟通好发送的地址
+			url: "http://192.168.20.25:3000/user/signup",//与后端沟通好发送的地址
 			cache: false,//忽略缓存
 			data: param,//与后端沟通好名称，那个newDate（）是为了读取最新的数据
 			success: function(data){

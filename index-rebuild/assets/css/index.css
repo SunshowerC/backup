@@ -830,6 +830,13 @@ article.post-item {
 }
 
 .post-item > .media-body > .media-heading {
+	display: -webkit-box !important;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp:1;
+
 	color: #4e73b8;
 	font-size:14px;
 }
@@ -852,6 +859,19 @@ article.post-item {
 	bottom: 0;
 	width: 100%;
 	color: #aaa;
+}
+
+.post-item .media-left p {
+	display: -webkit-box !important;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	word-break: break-all;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp:2;
+
+	width: 60px;
+	font-size: 14px;
+
 }
 
 .post-item footer > .sign-info {

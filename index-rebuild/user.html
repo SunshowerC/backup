@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/user.css">
     <link rel="stylesheet" href="assets/css/basic.css">
     <link rel="stylesheet" type="text/css" href="assets/css/assess.css">
+    <link rel="stylesheet" href="assets/css/tooltip.css">
 </head>
 <body>
 
@@ -285,6 +286,7 @@
         <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
             <input type="tel"
+                   id="phone"
                    class="form-control"
                    name="phone_short"
                    placeholder="短号"
@@ -296,6 +298,7 @@
         <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
             <input type="text"
+                   id="wechat"
                    class="form-control"
                    name="wechat"
                    placeholder="微信"
@@ -307,6 +310,7 @@
         <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-qq"></span></span>
             <input type="text"
+                   id="qq"
                    class="form-control"
                    pattern="\d"
                    name="qq"
@@ -364,7 +368,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--我发布的帖子&&状态0 待确定1，<br>
                 postGroup(左侧组别): <%= item.postGroup %>;
@@ -410,7 +414,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--状态2&&任务受益人          待受益人点击完成任务/取消任务2
                 <br>
@@ -458,7 +462,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--我接收的任务&&状态1        已报名5
                 <br>
@@ -505,7 +509,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--状态2&&任务非受益人        非受益人任务进行中 6
                 <br>
@@ -552,7 +556,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--我发布的任务&&帖子状态3&&发帖人未评分||我参与的任务&&帖子状态3&&参与人未评分    点击完成任务后，我未评价3
                 <br>
@@ -603,7 +607,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--我发布的帖子&&帖子状态3&&参与人已评价 || 我参与的帖子&&帖子状态3&&发帖人已评价  点击完成任务后，对方已评价7
                 <br>
@@ -650,7 +654,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--帖子状态3 && 双方评分，或者帖子结束
                 <br>
@@ -696,7 +700,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--
                 帖子状态1 && 我参与的帖子
@@ -745,7 +749,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 <!--收藏的帖子
                 <br>
@@ -796,7 +800,7 @@
         </div>
 
         <div class="media-body">
-            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= item.title %></a>
+            <a href="detail.html?id=<%= item._id %>"  target="_blank" class="media-heading"><%= $.replace_em( item.title ) %></a>
             <p class="article-content">
                 异常情况，请上报
                 <br>
@@ -868,6 +872,7 @@
 <script src="scripts/avatarJcrop2.0.js"></script>
 <!--评分-->
 <script src="scripts/startScore.js"></script>
+<script src="scripts/tooltip.js"></script>
 
 
 

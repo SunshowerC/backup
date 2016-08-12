@@ -427,11 +427,21 @@ article.post-item {
 }
 
 .post-item .media-left {
+
   text-align: center;
 }
 .post-item .media-left p {
+  display: -webkit-box !important;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
+
+
   width: 60px;
   font-size: 14px;
+  word-wrap:break-word;
 }
 
 .post-item .media-object {
@@ -444,6 +454,16 @@ article.post-item {
   height: 120px;
   padding-bottom: 20px;
 }
+
+.post-item .media-heading {
+  display: -webkit-box !important;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:1;
+}
+
 .post-item > .media-body h4 {
   color: #4e73b8;
   font-size: 14px;
@@ -593,6 +613,8 @@ article.post-item {
 }
 
 .message-item .media-heading {
+
+
   font-size: 12px;
   color: #666;
 }
@@ -612,17 +634,19 @@ article.post-item {
 .ensure-mission-panel .mission-avatar-item {
   position: relative;
   float: left;
-  width: 100px;
-  margin: 0 25px 20px;
+  width: 110px;
+  margin: 0 20px 20px;
   overflow: hidden;
   cursor: pointer;
-  transition: box-shadow 0.4s;
+  transition: border-color 0.4s;
+  border: 5px solid transparent;
 }
 .ensure-mission-panel .mission-avatar-item:hover .person-info {
   bottom: 0;
 }
 .ensure-mission-panel .mission-avatar-item.active {
-  box-shadow: 0 0px 15px #3A8DBF;
+  /*box-shadow: 0 0px 15px #3A8DBF;*/
+  border: 5px solid #337AB7;
 }
 .ensure-mission-panel .mission-avatar-item .person-info {
   position: absolute;
@@ -694,5 +718,38 @@ article.post-item {
   transform:translate(50%,-50%) rotate(45deg) ;
   right:22px;
   top:22px;
+}
+
+/*tooltip*/
+
+.tooltip {
+  position: absolute;
+  top:0;
+  transform: translate(50px,-100%);
+
+  padding: 5px 0;
+  opacity: 0;
+  transition-duration: 0.5s;
+}
+
+.tooltip.active {
+  opacity:1;
+  filter: alpha(opacity=100);
+}
+
+
+#user-detail .form-group {
+  margin-bottom:25px;
+}
+
+#user-detail .form-control {
+  transition-duration: 0.5s ;
+
+}
+
+#user-detail .form-control.wrong  {
+  border-color: #ff0000 #ff0000 #ff0000 transparent;
+
+  box-shadow: 0 0 8px #ff0000;
 }
 

@@ -56,6 +56,7 @@ function replace_em(str){
                     data.result.map(function(item){
                         item.publisherAvatar =imgOrigin + item.publisherAvatar  ;
                         item.content = replace_em(item.content);
+                        item.title = replace_em(item.title);
                     });
                     console.log(data)
                     $('#posts-container').html(tpl('#post-tpl', data.result, "posts"))
@@ -114,6 +115,7 @@ function replace_em(str){
                 });
         }
     });
+
     $('#posts-container').on('click', '.collect-post', function (e) {
         //收藏帖子
         var $This = $(this);

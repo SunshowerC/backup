@@ -47,6 +47,7 @@
             return $.ajax({
                 url: $.originUrl + opt.url,
                 data: opt.data
+                // beforeSend: opt.beforeSend || function(){}
             });
         },
 
@@ -57,7 +58,8 @@
 
 
         render: {
-             
+
+
             myInfo: function (data) {
                 $('.user-info').html(postModule.createPostDom("#user-info-tpl", data.result.userInfo, "user"));
                 $('#user-detail').prepend(postModule.createPostDom('#user-detail-tpl', data.result.userInfo, "user"));
@@ -73,6 +75,10 @@
                         postModule.createPostDom("#ensure-mission-tpl", data.result.participant, "participants")
                     )
                 }
+            },
+
+            refreshDom: function () {
+                $('#post-page').find('.active > a').trigger('click');
             }
 
         },
@@ -87,11 +93,87 @@
 
             var $tabWrap = $('#tab-wrap');
             var $ensurePanel = $('#ensure-mission');
-            var $missionAvatar = $ensurePanel.find('figure');
-
+            // var $missionAvatar = $ensurePanel.find('figure');
+            var $postPage = $('#post-page');
             var postGroup = ["/user/myPubPosts", "/user/myJoinPosts", "/user/myFavoPosts"];
             var postGroupIndex = 0, postStatus = 0, totalPostsNum = 1, postsPerPage = 3;
 
+            var reg = {
+                phone: /^[\d]{1,6}$/,
+                wechat: /^[\w]+$/,
+                qq: /^[\d]{1,15}$/,
+                phoneTip: "请输入正确的短号号码",
+                wechatTip: "请输入正确的微信号",
+                qqTip: "请输入正确的QQ号码"
+            };
+
+            function validate() {
+                $('#user-detail').on({
+                    blur: function () {
+                        var inputId = $(this).attr('id');
+                        var formGroup = $(this).closest('.form-group')[0];
+
+                        var   value = $.trim( $(this).val() );
+                        //无需验证情况
+                        if (!reg[inputId]) {
+                            return false;
+                        }
+
+                        //初始化tooltip
+                        if (! formGroup.tooltip) {
+                            formGroup.tooltip = new Tooltip({
+                                selector: formGroup,
+                                content:reg[inputId + "Tip"]
+                            })
+                        }
+
+                        //正则验证输入
+                        if ( !reg[inputId].test( value ) ) {
+                            formGroup.tooltip.show();
+                            $(this).addClass('wrong');
+                            console.log(reg[inputId + "Tip"])
+                        }
+                    },
+                    focus:function () {
+                        var formGroup = $(this).closest('.form-group')[0];
+                        formGroup.tooltip ? formGroup.tooltip.hide() : "";
+                        $(this).removeClass('wrong');
+                    }
+                },'.form-control');
+
+/*                $('#user-detail').on('blur','.form-control',function () {
+                    var inputId = $(this).attr('id');
+                    var formGroup = $(this).closest('.form-group')[0];
+
+                     var   value = $.trim( $(this).val() );
+                    //无需验证情况
+                    if (!reg[inputId]) {
+                        return false;
+                    }
+
+                    //初始化tooltip
+                    if (! formGroup.tooltip) {
+                        formGroup.tooltip = new Tooltip({
+                            selector: formGroup,
+                            content:reg[inputId + "Tip"]
+                        })
+                    }
+
+                    //正则验证输入
+                    if ( !reg[inputId].test( value ) ) {
+                        formGroup.tooltip.show();
+                        $(this).addClass('wrong');
+                        console.log(reg[inputId + "Tip"])
+                    }
+                }).on('focus','.form-control',function () {
+                    var formGroup = $(this).closest('.form-group')[0];
+                    formGroup.tooltip ? formGroup.tooltip.hide() : "";
+                    $(this).removeClass('wrong');
+                })*/
+            }
+
+
+            validate();
 
             /********基本交互事件*********/
 
@@ -126,7 +208,7 @@
             // 确定任务人面板上，点击确定/取消
             $ensurePanel.on('click', 'figure,a,button', function () {
                 if ($(this).is('figure')) {
-                    $missionAvatar.removeClass('active');
+                    $ensurePanel.find('figure').removeClass('active');
                     $(this).toggleClass('active');
                 }
 
@@ -135,6 +217,8 @@
 
                 }
             });
+
+
 
 
             /*********ajax请求事件**********/
@@ -153,15 +237,29 @@
 
             //修改个人信息 
             $('#info-submit').on('click', function () {
-                var changeInfo = that.getData({
+
+/*                var changeInfo = that.getData({
                     url: "/user/update",
                     data: $('#user-detail').serialize() + "&userId=" + userId
+                });*/
+
+                var changeInfo = $.ajax({
+                    url: $.originUrl + "/user/update",
+                    data: $('#user-detail').serialize() + "&userId=" + userId,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('xkey', userId);
+                        xhr.setRequestHeader('xtoken', token);
+                        return !$('#user-detail').find(':input').hasClass("wrong");
+                    }
                 });
 
                 changeInfo.done(function (data) {
                     console.log("修改个人信息",data);
-                    $(document).trigger("disableModify");
-                    alert("修改个人信息成功")
+                    if (data.status == 100) {
+                        $(document).trigger("disableModify");
+                        alert("修改个人信息成功")
+                    }
+
                 });
             });
 
@@ -210,8 +308,8 @@
                 }).always(function (data) {
                     console.log("帖子主体",data)
                     //设置分页默认值为第一页,重新计算页数
-                    $('#post-page').bootstrapPaginator("showFirst");
-                    $('#post-page').bootstrapPaginator("setOptions", {
+                    $postPage.bootstrapPaginator("showFirst");
+                    $postPage.bootstrapPaginator("setOptions", {
                         totalPages: Math.ceil(totalPostsNum / postsPerPage)
                     });
                 });
@@ -222,15 +320,15 @@
 
             //    分页系统
             $(document).on("postPagination", function () {
-        
-                $('#post-page').bootstrapPaginator({
+
+                $postPage.bootstrapPaginator({
                     alignment: "center",
                     currentPage: 1,
                     totalPages: totalPostsNum / postsPerPage + 1, //总页数
                     numberOfPages: 5,  // 可视页数
                     bootstrapMajorVersion: 3,
-                    onPageChanged: function (event, oldpage, newpage) {
-                        // console.log(event,oldpage,newpage);
+                    onPageClicked: function (event, originalEvent, type,page) {
+
                         //查看我的帖子
 
                         var checkMyPost = that.getData({
@@ -239,7 +337,7 @@
                                 userId: userId,
                                 type: 2,  //所有帖子
                                 status: postStatus,  //进行中的帖子
-                                start_num: (newpage - 1) * postsPerPage,
+                                start_num: (page - 1) * postsPerPage,
                                 page_size: postsPerPage  //每页帖子个数
                             }
                         });
@@ -317,9 +415,9 @@
 
                     completeMission.done(function (data) {
                         console.log("完成任务",data)
-
                         alert("已确定完成任务")
-                    });
+
+                    }).done(that.render.refreshDom);
                 }
 
 
@@ -337,9 +435,11 @@
                         });
 
                         access.done(function (data) {
-                            console.log("评价",data)
-                            alert('评价成功');
-                        })
+                            console.log("评价",data);
+                            if (data.status == 100 ) {
+                                alert('评价成功');
+                            }
+                        }).done(that.render.refreshDom)
                     });
                 }
 
@@ -380,7 +480,7 @@
 
                     alert("已确定任务人");
                     $ensurePanel.slideUp();
-                })
+                }).done(that.render.refreshDom)
             });
 
 
@@ -389,10 +489,11 @@
     };
     
     
+
+    postModule.init();
     
     
 
-    postModule.init();
 
 
 
@@ -416,7 +517,7 @@
                 xhr.setRequestHeader('xtoken', localStorage['token']);
             },
             function success(data) {
-                console.log(data)
+                console.log(data);
                 if (data.statusCode == 100) {
                     var rankHtml = '';
                     var msglist = data.result.msgList;
